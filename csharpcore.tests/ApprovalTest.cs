@@ -21,7 +21,7 @@ namespace csharpcore
             var output = fakeoutput.ToString();
 
             var file = File.ReadAllText("../../../ExpectedOutput.txt");
-
+            
             Assert.Equal(output, file);
             // Approvals.Verify(output);
         }

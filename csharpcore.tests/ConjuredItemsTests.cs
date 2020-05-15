@@ -5,7 +5,7 @@ namespace csharpcore
 {
     public class ConjuredItemsTests
     {
-        private const string CONJURED_ITEM_NAME = "Conjured";
+        private const string CONJURED_ITEM_NAME = "Conjured Mana Cake";
 
         [Fact]
         public void ConjuredItemsLoseValueTwicePerDay()

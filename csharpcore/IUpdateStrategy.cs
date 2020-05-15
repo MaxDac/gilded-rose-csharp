@@ -48,7 +48,7 @@ namespace csharpcore
         private const string AGED_BRIE_NAME = "Aged Brie";
         private const string BACKSTAGE_PASS_NAME = "Backstage passes to a TAFKAL80ETC concert";
         private const string SULFURAS_NAME = "Sulfuras, Hand of Ragnaros";
-        private const string CONJURED_NAME = "Conjured";
+        private const string CONJURED_NAME = "Conjured Mana Cake";
 
         public static Dictionary<string, IUpdateStrategy> GetStrategies() =>
             new Dictionary<string, IUpdateStrategy>
