@@ -15,3 +15,6 @@ I then decided to implement a Strategy Pattern: I first defined an interface rep
 With the strategy patter in place, the next refactory was to translate the quality update after the update of the SellIn property inside the strategies. This was easy due to the previous strategy selector method implemented based on the name of the item. I added a method to the interface, and implemented it in the strategies copying the code in the UpdateQualityAfterSellInUpdate method previously defined.
 The only piece of logic left in the method ***UpdateQuality*** was the control of the SellIn property: the if determining whether the item expired or not, common to all the strategies, was left in the update function of the ***GildedRose*** class.
 
+The next thing to refactor before implementing the new feature was to implement the SellIn property update in the strategies, and then refactor the detection of the expiration logic. I decided to create another method in the interface ***IUpdateStrategy*** to manage the SellIn property update.
+As for the implementation of the update logic, that will encapsulate the whole behavior defined by the strategies, due to the limitation of this version of C#, I had to refactor the interface as an abstract class.
+

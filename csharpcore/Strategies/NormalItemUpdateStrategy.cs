@@ -2,7 +2,7 @@ namespace csharpcore.Strategies
 {
     public class NormalItemUpdateStrategy : IUpdateStrategy
     {
-        public Item UpdateItemStandard(Item item)
+        public override Item UpdateItemStandard(Item item)
         {
             if (item.Quality > 0)
             {
@@ -12,14 +12,17 @@ namespace csharpcore.Strategies
             return item;
         }
 
-        public Item UpdateExpiredItem(Item item)
+        public override Item UpdateExpiration(Item item)
+        {
+            item.SellIn = item.SellIn - 1;
+            return item;
+        }
+
+        public override Item UpdateExpiredItem(Item item)
         {
             if (item.Quality > 0)
             {
-                if (item.Name != "Sulfuras, Hand of Ragnaros")
-                {
-                    item.Quality = item.Quality - 1;
-                }
+                item.Quality = item.Quality - 1;
             }
 
             return item;
