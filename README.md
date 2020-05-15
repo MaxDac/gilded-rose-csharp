@@ -18,3 +18,4 @@ The only piece of logic left in the method ***UpdateQuality*** was the control o
 The next thing to refactor before implementing the new feature was to implement the SellIn property update in the strategies, and then refactor the detection of the expiration logic. I decided to create another method in the interface ***IUpdateStrategy*** to manage the SellIn property update.
 As for the implementation of the update logic, that will encapsulate the whole behavior defined by the strategies, due to the limitation of this version of C#, I had to refactor the interface as an abstract class.
 
+The last refactory before the implementation of the new functionality is to declare an instance of every strategy before the loop, in order to not recreate an instance for every item in the list.

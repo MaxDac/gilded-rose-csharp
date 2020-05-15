@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using csharpcore.Strategies;
 
 namespace csharpcore
@@ -22,22 +23,26 @@ namespace csharpcore
             this.Items = items;
         }
 
-        private IUpdateStrategy StrategySelector(Item item)
+        private Dictionary<string, IUpdateStrategy> GetStrategies()
         {
-            switch (item.Name)
-            {
-                case AGED_BRIE_NAME: return new AgedBrieUpdateStrategy();
-                case SULFURAS_NAME: return new SulfurasUpdateStrategy();
-                case BACKSTAGE_PASS_NAME: return new BackstagePassUpdateStrategy();
-                default: return new NormalItemUpdateStrategy();
-            }
+            var dict = new Dictionary<string, IUpdateStrategy>();
+            dict.Add(AGED_BRIE_NAME, new AgedBrieUpdateStrategy());
+            dict.Add(SULFURAS_NAME, new SulfurasUpdateStrategy());
+            dict.Add(BACKSTAGE_PASS_NAME, new BackstagePassUpdateStrategy());
+            dict.Add("Normal", new NormalItemUpdateStrategy());
+            return dict;
         }
+
+        private IUpdateStrategy StrategySelector(Item item, Dictionary<string, IUpdateStrategy> strategies) =>
+            strategies.ContainsKey(item.Name) ? strategies[item.Name] : strategies["Normal"];
 
         public void UpdateQuality()
         {
+            var strategies = this.GetStrategies();
+            
             for (var i = 0; i < Items.Count; i++)
             {
-                var strategy = this.StrategySelector(Items[i]);
+                var strategy = this.StrategySelector(Items[i], strategies);
                 Items[i] = strategy.UpdateItem(Items[i]);
             }
         }
