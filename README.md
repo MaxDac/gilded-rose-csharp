@@ -19,3 +19,5 @@ The next thing to refactor before implementing the new feature was to implement 
 As for the implementation of the update logic, that will encapsulate the whole behavior defined by the strategies, due to the limitation of this version of C#, I had to refactor the interface as an abstract class.
 
 The last refactory before the implementation of the new functionality is to declare an instance of every strategy before the loop, in order to not recreate an instance for every item in the list.
+
+The last thing to do is to implement the new functionality, the Conjured items. This would consist in the implementation of a new strategy, and the update of the strategy selector method. In order to keep the strategy logic in one place, I moved the strategy selector inside the abstract class.

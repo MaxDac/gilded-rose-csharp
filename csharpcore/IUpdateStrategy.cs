@@ -1,3 +1,6 @@
+using System.Collections.Generic;
+using csharpcore.Strategies;
+
 namespace csharpcore
 {
     public abstract class IUpdateStrategy
@@ -41,5 +44,23 @@ namespace csharpcore
 
             return item;
         }
+        
+        private const string AGED_BRIE_NAME = "Aged Brie";
+        private const string BACKSTAGE_PASS_NAME = "Backstage passes to a TAFKAL80ETC concert";
+        private const string SULFURAS_NAME = "Sulfuras, Hand of Ragnaros";
+        private const string CONJURED_NAME = "Conjured";
+
+        public static Dictionary<string, IUpdateStrategy> GetStrategies() =>
+            new Dictionary<string, IUpdateStrategy>
+            {
+                {AGED_BRIE_NAME, new AgedBrieUpdateStrategy()},
+                {SULFURAS_NAME, new SulfurasUpdateStrategy()},
+                {BACKSTAGE_PASS_NAME, new BackstagePassUpdateStrategy()},
+                {CONJURED_NAME, new ConjuredItemUpdateStrategy()},
+                {"Normal", new NormalItemUpdateStrategy()}
+            };
+
+        public static IUpdateStrategy StrategySelector(Item item, Dictionary<string, IUpdateStrategy> strategies) =>
+            strategies.ContainsKey(item.Name) ? strategies[item.Name] : strategies["Normal"];
     }
 }
