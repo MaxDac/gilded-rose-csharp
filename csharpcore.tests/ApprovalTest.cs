@@ -20,7 +20,10 @@ namespace csharpcore
             Program.Main(new string[] { });
             var output = fakeoutput.ToString();
 
-            Approvals.Verify(output);
+            var file = File.ReadAllText("../../../ExpectedOutput.txt");
+
+            Assert.Equal(output, file);
+            // Approvals.Verify(output);
         }
     }
 }

@@ -5,9 +5,16 @@ namespace csharpcore
     public class GildedRose
     {
         IList<Item> Items;
-        public GildedRose(IList<Item> Items)
+        
+        // The property should be accessed from the class, not by retaining the reference in the item sent to the 
+        // constructor
+        //
+        // No syntactic sugar with get: because by problem definition the property *Items* must not be touched.
+        public IList<Item> GetItems() => this.Items;
+        
+        public GildedRose(IList<Item> items)
         {
-            this.Items = Items;
+            this.Items = items;
         }
 
         public void UpdateQuality()
