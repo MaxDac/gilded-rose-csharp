@@ -6,5 +6,10 @@ namespace csharpcore.Strategies
         {
             return item;
         }
+
+        public Item UpdateExpiredItem(Item item)
+        {
+            return item;
+        }
     }
 }

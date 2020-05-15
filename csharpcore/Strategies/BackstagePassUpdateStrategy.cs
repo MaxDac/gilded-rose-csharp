@@ -27,5 +27,11 @@ namespace csharpcore.Strategies
             
             return item;
         }
+
+        public Item UpdateExpiredItem(Item item)
+        {
+            item.Quality = item.Quality - item.Quality;
+            return item;
+        }
     }
 }

@@ -11,5 +11,15 @@ namespace csharpcore.Strategies
 
             return item;
         }
+
+        public Item UpdateExpiredItem(Item item)
+        {
+            if (item.Quality < 50)
+            {
+                item.Quality = item.Quality + 1;
+            }
+
+            return item;
+        }
     }
 }
