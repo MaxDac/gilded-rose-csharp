@@ -8,4 +8,7 @@ Then, I wrote the unit test to represent the correct behavior and the edge cases
 
 Before implementing the new feature, I refactored the code in order to make easier adding new feature, otherwise the implementation of another requirements would have been nearly impossible.
 
-The first refactoring consisted in factoring the two main updates in the function GildedRose.UpdateQuality. I separated the quality update before the SellIn update, and after. But even then, it was nearly impossible to find the right spot to implement the new Conjured item feature. 
+The first refactoring consisted in factoring the two main updates in the function GildedRose.UpdateQuality. I separated the quality update before the SellIn update, and after. But even then, it was nearly impossible to find the right spot to implement the new Conjured item feature.
+
+I then decided to implement a Strategy Pattern: I first defined an interface representing the "Standard" update, i.e. the update that happens before the update of the SellIn property, refactoring the implemented UpdateQualityStandard method. This was a major refactory, so I decided to identify the code related to each different item, and copy the conditions directly in the method implementation. I then run the unit test to verify that the code still works.
+ 
